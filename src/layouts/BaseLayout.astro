@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Bob’s Business Bots — Never miss another emergency job call",
+	description =
+		'Done-for-you GoHighLevel marketing automation for plumbers, HVAC, locksmiths, and water restoration. $297 setup. $447/mo. We run it. You answer the jobs.',
+} = Astro.props;
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#121417" />
+		{canonical && <link rel="canonical" href={canonical} />}
+		<title>{title}</title>
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+
+		<link
+			rel="preload"
+			href="/fonts/geist-sans-latin-700-normal.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="/fonts/geist-sans-latin-400-normal.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link rel="preload" as="image" href="/images/hero-1280.avif" type="image/avif" />
+
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="/images/hero-1280.jpg" />
+		<meta name="twitter:card" content="summary_large_image" />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

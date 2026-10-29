@@ -1,0 +1,17 @@
+---
+interface Props {
+	href: string;
+	variant?: 'primary' | 'ghost';
+	block?: boolean;
+	class?: string;
+}
+
+const { href, variant = 'primary', block = false, class: className = '' } = Astro.props;
+const classes = ['btn', `btn--${variant}`, block ? 'btn--block' : '', className]
+	.filter(Boolean)
+	.join(' ');
+---
+
+<a class={classes} href={href} data-cta="ghl-calendar">
+	<slot />
+</a>

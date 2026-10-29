@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaButton from '../components/CtaButton.astro';
+
+const calendarUrl =
+	import.meta.env.PUBLIC_GHL_CALENDAR_URL ||
+	'https://example.com/placeholder-ghl-calendar';
+---
+
+<BaseLayout>
+	<header class="hero">
+		<div class="hero__media" aria-hidden="true">
+			<picture>
+				<source
+					type="image/avif"
+					srcset="/images/hero-768.avif 768w, /images/hero-1280.avif 1280w, /images/hero-1920.avif 1920w"
+					sizes="100vw"
+				/>
+				<source
+					type="image/webp"
+					srcset="/images/hero-768.webp 768w, /images/hero-1280.webp 1280w, /images/hero-1920.webp 1920w"
+					sizes="100vw"
+				/>
+				<img
+					src="/images/hero-1280.jpg"
+					width="1280"
+					height="720"
+					alt=""
+					fetchpriority="high"
+					decoding="async"
+				/>
+			</picture>
+		</div>
+		<div class="hero__scrim" aria-hidden="true"></div>
+		<div class="hero__inner">
+			<p class="hero__brand">Bob’s Business <span>Bots</span></p>
+			<h1 class="hero__headline">Every missed call is a job you already paid to get.</h1>
+			<p class="hero__support">
+				We install and run your after-hours lead machine — so plumbers, HVAC techs, locksmiths, and
+				water restoration crews stop losing emergency work to whoever picks up first.
+			</p>
+			<div class="hero__actions">
+				<CtaButton href={calendarUrl}>Book your setup call</CtaButton>
+				<a class="btn btn--ghost" href="#pricing">See the offer</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<section class="section problem" id="problem" aria-labelledby="problem-title">
+			<div class="page-wrap">
+				<p class="section__eyebrow">The problem</p>
+				<h2 class="section__title" id="problem-title">Your phone rings. You’re on a job. The lead goes to the next guy.</h2>
+				<p class="section__lead">
+					Emergency trades don’t lose work because the marketing is “bad.” You lose work because
+					nobody answered — or because you spent Tuesday fighting software instead of running trucks.
+				</p>
+				<ul class="problem__list">
+					<li class="problem__item">
+						<h3>Missed call = missed ticket</h3>
+						<p>
+							Burst pipe. Dead AC. Locked out at 9pm. That caller is hiring whoever answers — not
+							whoever has the nicest logo.
+						</p>
+					</li>
+					<li class="problem__item">
+						<h3>Phone-tag kills urgency</h3>
+						<p>
+							Callbacks that land three hours later don’t close. Speed-to-lead is the whole game in
+							emergency service.
+						</p>
+					</li>
+					<li class="problem__item">
+						<h3>DIY software eats your week</h3>
+						<p>
+							CRM videos, zap maps, half-built automations. You didn’t open a trade business to
+							become a part-time marketing ops guy.
+						</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section offer" id="offer" aria-labelledby="offer-title">
+			<div class="page-wrap">
+				<p class="section__eyebrow">The offer</p>
+				<h2 class="section__title" id="offer-title">Done-for-you. Built in GoHighLevel. You never touch the platform.</h2>
+				<p class="section__lead">
+					Bob’s Business Bots installs, owns the build, and runs the system. You stay on the tools.
+					We stay in the software.
+				</p>
+				<div class="offer__grid reveal" data-reveal>
+					<div class="offer__row">
+						<span class="offer__mark" aria-hidden="true">01</span>
+						<div>
+							<h3>Lead capture that doesn’t sleep</h3>
+							<p>
+								Missed-call text-back, web forms, and inbound routing wired so a hot lead gets a
+								response in minutes — not “when you get a break.”
+							</p>
+						</div>
+					</div>
+					<div class="offer__row">
+						<span class="offer__mark" aria-hidden="true">02</span>
+						<div>
+							<h3>Pipelines & follow-up that close the loop</h3>
+							<p>
+								Stages for new lead → booked → ran → paid. Automated nudges for no-shows and
+								“I’ll think about it” so jobs don’t evaporate.
+							</p>
+						</div>
+					</div>
+					<div class="offer__row">
+						<span class="offer__mark" aria-hidden="true">03</span>
+						<div>
+							<h3>Messaging that sounds like your shop</h3>
+							<p>
+								Plain-language scripts for plumbers, HVAC, locksmiths, and water restoration —
+								not generic SaaS fluff.
+							</p>
+						</div>
+					</div>
+					<div class="offer__row">
+						<span class="offer__mark" aria-hidden="true">04</span>
+						<div>
+							<h3>We run it. You don’t babysit it.</h3>
+							<p>
+								Monitoring, tweaks, and accountability from a solo operator who lives in GHL.
+								Your job: answer the booked work.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="how" aria-labelledby="how-title">
+			<div class="page-wrap">
+				<p class="section__eyebrow">How it works</p>
+				<h2 class="section__title" id="how-title">Three steps. Then the phone starts paying for itself.</h2>
+				<ol class="steps">
+					<li class="step">
+						<h3>Onboard</h3>
+						<p>
+							Book a call. We map your services, hours, service area, and how you want leads
+							handled after hours.
+						</p>
+					</li>
+					<li class="step">
+						<h3>We build</h3>
+						<p>
+							Your GHL stack goes live: capture, routing, pipelines, follow-up. You approve the
+							copy. We flip the switch.
+						</p>
+					</li>
+					<li class="step">
+						<h3>Leads get answered</h3>
+						<p>
+							Missed calls text back. Forms book. Follow-up runs. You show up to jobs that used
+							to ghost you.
+						</p>
+					</li>
+				</ol>
+			</div>
+		</section>
+
+		<section class="section pricing" id="pricing" aria-labelledby="pricing-title">
+			<div class="page-wrap">
+				<p class="section__eyebrow">Pricing</p>
+				<h2 class="section__title" id="pricing-title">$297 to get in. $447/mo to keep winning the after-hours war.</h2>
+				<div class="price-block">
+					<div>
+						<dl class="price-figures">
+							<div>
+								<dt>One-time setup</dt>
+								<dd>$297</dd>
+							</div>
+							<div>
+								<dt>Monthly</dt>
+								<dd>$447 <small>/mo</small></dd>
+							</div>
+						</dl>
+						<p class="section__lead" style="margin-bottom: 0">
+							Clear price. Clear deliverable. No “custom quote” theater. If one recovered emergency
+							job covers the month — and for most shops it does — the math is not complicated.
+						</p>
+					</div>
+					<div>
+						<div class="includes">
+							<h3>What’s included</h3>
+							<ul>
+								<li>Full GHL build for your emergency-trade offer</li>
+								<li>Missed-call / speed-to-lead response flows</li>
+								<li>Pipeline, stages, and follow-up sequences</li>
+								<li>Ongoing operation and iteration by Bob</li>
+								<li>Direct line to the person who built it</li>
+							</ul>
+						</div>
+						<div class="excludes" style="margin-top: var(--space-6)">
+							<h3>What’s not</h3>
+							<ul>
+								<li>You learning GoHighLevel</li>
+								<li>A bloated agency team between you and the work</li>
+								<li>Paid ads spend (media budget stays yours)</li>
+								<li>OnRoof Systems / roofing lead product (separate brand)</li>
+							</ul>
+						</div>
+						<div style="margin-top: var(--space-6)">
+							<CtaButton href={calendarUrl} block>Book your setup call</CtaButton>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="trust" aria-labelledby="trust-title">
+			<div class="page-wrap">
+				<p class="section__eyebrow">Why this works</p>
+				<h2 class="section__title" id="trust-title">Specifics beat slogans.</h2>
+				<div class="trust__points">
+					<div class="trust__point">
+						<strong>Deep GHL, not dabbling</strong>
+						<p>
+							Built by an operator who has run GoHighLevel at scale — CRM, pipelines, automations,
+							messaging — as the core of the business, not a side hobby.
+						</p>
+					</div>
+					<div class="trust__point">
+						<strong>Systemized for a solo shop</strong>
+						<p>
+							No employees to “manage your account.” One accountable human. Documented systems.
+							Built so it keeps working when you’re under a sink.
+						</p>
+					</div>
+					<div class="trust__point">
+						<strong>Written for trades, not SaaS buyers</strong>
+						<p>
+							Dan Kennedy direct-response: hard offer, clear price, urgency grounded in missed
+							jobs — not “empower your journey.”
+						</p>
+					</div>
+				</div>
+				<p class="trust__note">
+					Client results and named testimonials will live here once live accounts clear for public
+					use. Until then: book a call and we’ll walk your numbers straight — no manufactured
+					five-star collage.
+				</p>
+			</div>
+		</section>
+
+		<section class="section faq" id="faq" aria-labelledby="faq-title">
+			<div class="page-wrap">
+				<p class="section__eyebrow">FAQ</p>
+				<h2 class="section__title" id="faq-title">Straight answers before you book.</h2>
+				<div class="faq__list">
+					<details class="faq__item">
+						<summary>Do I need to learn GoHighLevel?</summary>
+						<p>
+							No. That’s the point. We build it and run it. You approve messaging and show up to
+							booked jobs. If you want a login later for visibility, fine — it’s optional, not
+							required.
+						</p>
+					</details>
+					<details class="faq__item">
+						<summary>Who answers the leads?</summary>
+						<p>
+							Your shop — or the after-hours process we set with you. The system makes sure
+							someone (or an immediate text-back) engages fast. We don’t pretend to be your
+							dispatcher unless that’s part of the plan we agree on the call.
+						</p>
+					</details>
+					<details class="faq__item">
+						<summary>Is there a long contract?</summary>
+						<p>
+							Month-to-month after setup. Stay because the machine is making you money — not
+							because a PDF trapped you.
+						</p>
+					</details>
+					<details class="faq__item">
+						<summary>I already pay for ads / a website. Do I rip that out?</summary>
+						<p>
+							No. We plug the holes where leads die — missed calls, slow follow-up, messy handoffs.
+							Your traffic sources can stay. The response system gets fixed.
+						</p>
+					</details>
+					<details class="faq__item">
+						<summary>What trades is this for?</summary>
+						<p>
+							Emergency-service shops where a missed ring is a missed ticket: plumbing, HVAC,
+							locksmith, water damage restoration. If that’s you, book the call.
+						</p>
+					</details>
+				</div>
+			</div>
+		</section>
+
+		<section class="section final" id="book" aria-labelledby="final-title">
+			<div class="page-wrap">
+				<h2 class="final__title" id="final-title">Stop funding the competitor who picks up.</h2>
+				<p class="final__copy">
+					$297 setup. $447/mo. Done-for-you GHL. Book a short call, we’ll map your after-hours
+					leak, and if it’s a fit we build — you keep running trucks.
+				</p>
+				<CtaButton href={calendarUrl}>Book your setup call</CtaButton>
+				<p class="final__meta">Opens the GoHighLevel booking calendar. Fifteen minutes. Straight talk.</p>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer page-wrap">
+		<p><strong>Bob’s Business Bots</strong> — DFY marketing automation for emergency trades.</p>
+		<p>© {new Date().getFullYear()}</p>
+	</footer>
+</BaseLayout>
+
+<script>
+	const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const nodes = document.querySelectorAll('[data-reveal]');
+	if (!reduce && 'IntersectionObserver' in window) {
+		const io = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						io.unobserve(entry.target);
+					}
+				}
+			},
+			{ rootMargin: '0px 0px -8% 0px', threshold: 0.15 },
+		);
+		nodes.forEach((el) => io.observe(el));
+	} else {
+		nodes.forEach((el) => el.classList.add('is-visible'));
+	}
+</script>
