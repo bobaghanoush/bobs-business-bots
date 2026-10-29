@@ -22,20 +22,15 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
-		<meta name="theme-color" content="#121417" />
+		<meta name="theme-color" content="#101215" />
 		{canonical && <link rel="canonical" href={canonical} />}
 		<title>{title}</title>
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 
-		<link
-			rel="preload"
-			href="/fonts/geist-sans-latin-700-normal.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin
-		/>
+		<link rel="preload" href="/fonts/Satoshi-Black.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/Satoshi-Bold.woff2" as="font" type="font/woff2" crossorigin />
 		<link
 			rel="preload"
 			href="/fonts/geist-sans-latin-400-normal.woff2"

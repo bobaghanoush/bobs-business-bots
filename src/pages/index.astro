@@ -5,10 +5,60 @@ import CtaButton from '../components/CtaButton.astro';
 const calendarUrl =
 	import.meta.env.PUBLIC_GHL_CALENDAR_URL ||
 	'https://example.com/placeholder-ghl-calendar';
+
+const navLinks = [
+	{ href: '#problem', label: 'Problem' },
+	{ href: '#offer', label: 'Offer' },
+	{ href: '#how', label: 'How it works' },
+	{ href: '#pricing', label: 'Pricing' },
+	{ href: '#faq', label: 'FAQ' },
+];
 ---
 
 <BaseLayout>
-	<header class="hero">
+	<a class="sr-only" href="#main">Skip to content</a>
+
+	<nav class="site-nav" id="site-nav" aria-label="Primary">
+		<div class="site-nav__inner">
+			<a class="site-nav__brand" href="#top">Bob’s Business <em>Bots</em></a>
+			<ul class="site-nav__links">
+				{
+					navLinks.map((link) => (
+						<li>
+							<a href={link.href}>{link.label}</a>
+						</li>
+					))
+				}
+			</ul>
+			<div style="display:flex;align-items:center;gap:0.75rem">
+				<CtaButton href={calendarUrl} class="btn--nav site-nav__cta">Book a call</CtaButton>
+				<button
+					class="site-nav__toggle"
+					type="button"
+					aria-expanded="false"
+					aria-controls="nav-drawer"
+					data-nav-toggle
+				>
+					<span aria-hidden="true"></span>
+					<span class="sr-only">Menu</span>
+				</button>
+			</div>
+		</div>
+		<div class="site-nav__drawer" id="nav-drawer" hidden>
+			<div class="site-nav__drawer-inner">
+				{
+					navLinks.map((link) => (
+						<a href={link.href} data-nav-close>
+							{link.label}
+						</a>
+					))
+				}
+				<CtaButton href={calendarUrl} block>Book your setup call</CtaButton>
+			</div>
+		</div>
+	</nav>
+
+	<header class="hero" id="top">
 		<div class="hero__media" aria-hidden="true">
 			<picture>
 				<source
@@ -32,6 +82,7 @@ const calendarUrl =
 			</picture>
 		</div>
 		<div class="hero__scrim" aria-hidden="true"></div>
+		<div class="hero__grain" aria-hidden="true"></div>
 		<div class="hero__inner">
 			<p class="hero__brand">Bob’s Business <span>Bots</span></p>
 			<h1 class="hero__headline">Every missed call is a job you already paid to get.</h1>
@@ -46,36 +97,52 @@ const calendarUrl =
 		</div>
 	</header>
 
-	<main>
+	<main id="main">
 		<section class="section problem" id="problem" aria-labelledby="problem-title">
 			<div class="page-wrap">
-				<p class="section__eyebrow">The problem</p>
-				<h2 class="section__title" id="problem-title">Your phone rings. You’re on a job. The lead goes to the next guy.</h2>
-				<p class="section__lead">
-					Emergency trades don’t lose work because the marketing is “bad.” You lose work because
-					nobody answered — or because you spent Tuesday fighting software instead of running trucks.
-				</p>
-				<ul class="problem__list">
+				<div class="section__head section__head--split">
+					<div>
+						<p class="section__eyebrow">The problem</p>
+						<h2 class="section__title" id="problem-title">
+							Your phone rings. You’re on a job. The lead goes to the next guy.
+						</h2>
+					</div>
+					<p class="section__lead">
+						Emergency trades don’t lose work because the marketing is “bad.” You lose work because
+						nobody answered — or because you spent Tuesday fighting software instead of running
+						trucks.
+					</p>
+				</div>
+				<ul class="problem__list reveal" data-reveal>
 					<li class="problem__item">
-						<h3>Missed call = missed ticket</h3>
-						<p>
-							Burst pipe. Dead AC. Locked out at 9pm. That caller is hiring whoever answers — not
-							whoever has the nicest logo.
-						</p>
+						<span class="problem__index" aria-hidden="true">01</span>
+						<div>
+							<h3>Missed call = missed ticket</h3>
+							<p>
+								Burst pipe. Dead AC. Locked out at 9pm. That caller is hiring whoever answers — not
+								whoever has the nicest logo.
+							</p>
+						</div>
 					</li>
 					<li class="problem__item">
-						<h3>Phone-tag kills urgency</h3>
-						<p>
-							Callbacks that land three hours later don’t close. Speed-to-lead is the whole game in
-							emergency service.
-						</p>
+						<span class="problem__index" aria-hidden="true">02</span>
+						<div>
+							<h3>Phone-tag kills urgency</h3>
+							<p>
+								Callbacks that land three hours later don’t close. Speed-to-lead is the whole game
+								in emergency service.
+							</p>
+						</div>
 					</li>
 					<li class="problem__item">
-						<h3>DIY software eats your week</h3>
-						<p>
-							CRM videos, zap maps, half-built automations. You didn’t open a trade business to
-							become a part-time marketing ops guy.
-						</p>
+						<span class="problem__index" aria-hidden="true">03</span>
+						<div>
+							<h3>DIY software eats your week</h3>
+							<p>
+								CRM videos, zap maps, half-built automations. You didn’t open a trade business to
+								become a part-time marketing ops guy.
+							</p>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -83,62 +150,62 @@ const calendarUrl =
 
 		<section class="section offer" id="offer" aria-labelledby="offer-title">
 			<div class="page-wrap">
-				<p class="section__eyebrow">The offer</p>
-				<h2 class="section__title" id="offer-title">Done-for-you. Built in GoHighLevel. You never touch the platform.</h2>
-				<p class="section__lead">
-					Bob’s Business Bots installs, owns the build, and runs the system. You stay on the tools.
-					We stay in the software.
-				</p>
-				<div class="offer__grid reveal" data-reveal>
+				<div class="section__head section__head--split">
+					<div>
+						<p class="section__eyebrow">The offer</p>
+						<h2 class="section__title" id="offer-title">
+							Done-for-you. Built in GoHighLevel. You never touch the platform.
+						</h2>
+					</div>
+					<p class="section__lead">
+						Bob’s Business Bots installs, owns the build, and runs the system. You stay on the
+						tools. We stay in the software.
+					</p>
+				</div>
+				<div class="offer__grid reveal reveal-stagger" data-reveal>
 					<div class="offer__row">
 						<span class="offer__mark" aria-hidden="true">01</span>
-						<div>
-							<h3>Lead capture that doesn’t sleep</h3>
-							<p>
-								Missed-call text-back, web forms, and inbound routing wired so a hot lead gets a
-								response in minutes — not “when you get a break.”
-							</p>
-						</div>
+						<h3>Lead capture that doesn’t sleep</h3>
+						<p>
+							Missed-call text-back, web forms, and inbound routing wired so a hot lead gets a
+							response in minutes — not “when you get a break.”
+						</p>
 					</div>
 					<div class="offer__row">
 						<span class="offer__mark" aria-hidden="true">02</span>
-						<div>
-							<h3>Pipelines & follow-up that close the loop</h3>
-							<p>
-								Stages for new lead → booked → ran → paid. Automated nudges for no-shows and
-								“I’ll think about it” so jobs don’t evaporate.
-							</p>
-						</div>
+						<h3>Pipelines & follow-up that close the loop</h3>
+						<p>
+							Stages for new lead → booked → ran → paid. Automated nudges for no-shows and “I’ll
+							think about it” so jobs don’t evaporate.
+						</p>
 					</div>
 					<div class="offer__row">
 						<span class="offer__mark" aria-hidden="true">03</span>
-						<div>
-							<h3>Messaging that sounds like your shop</h3>
-							<p>
-								Plain-language scripts for plumbers, HVAC, locksmiths, and water restoration —
-								not generic SaaS fluff.
-							</p>
-						</div>
+						<h3>Messaging that sounds like your shop</h3>
+						<p>
+							Plain-language scripts for plumbers, HVAC, locksmiths, and water restoration — not
+							generic SaaS fluff.
+						</p>
 					</div>
 					<div class="offer__row">
 						<span class="offer__mark" aria-hidden="true">04</span>
-						<div>
-							<h3>We run it. You don’t babysit it.</h3>
-							<p>
-								Monitoring, tweaks, and accountability from a solo operator who lives in GHL.
-								Your job: answer the booked work.
-							</p>
-						</div>
+						<h3>We run it. You don’t babysit it.</h3>
+						<p>
+							Monitoring, tweaks, and accountability from a solo operator who lives in GHL. Your
+							job: answer the booked work.
+						</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="section" id="how" aria-labelledby="how-title">
+		<section class="section how" id="how" aria-labelledby="how-title">
 			<div class="page-wrap">
 				<p class="section__eyebrow">How it works</p>
-				<h2 class="section__title" id="how-title">Three steps. Then the phone starts paying for itself.</h2>
-				<ol class="steps">
+				<h2 class="section__title" id="how-title">
+					Three steps. Then the phone starts paying for itself.
+				</h2>
+				<ol class="steps reveal reveal-stagger" data-reveal>
 					<li class="step">
 						<h3>Onboard</h3>
 						<p>
@@ -156,8 +223,8 @@ const calendarUrl =
 					<li class="step">
 						<h3>Leads get answered</h3>
 						<p>
-							Missed calls text back. Forms book. Follow-up runs. You show up to jobs that used
-							to ghost you.
+							Missed calls text back. Forms book. Follow-up runs. You show up to jobs that used to
+							ghost you.
 						</p>
 					</li>
 				</ol>
@@ -167,7 +234,9 @@ const calendarUrl =
 		<section class="section pricing" id="pricing" aria-labelledby="pricing-title">
 			<div class="page-wrap">
 				<p class="section__eyebrow">Pricing</p>
-				<h2 class="section__title" id="pricing-title">$297 to get in. $447/mo to keep winning the after-hours war.</h2>
+				<h2 class="section__title" id="pricing-title">
+					$297 to get in. $447/mo to keep winning the after-hours war.
+				</h2>
 				<div class="price-block">
 					<div>
 						<dl class="price-figures">
@@ -185,7 +254,7 @@ const calendarUrl =
 							job covers the month — and for most shops it does — the math is not complicated.
 						</p>
 					</div>
-					<div>
+					<div class="price-aside">
 						<div class="includes">
 							<h3>What’s included</h3>
 							<ul>
@@ -202,7 +271,6 @@ const calendarUrl =
 								<li>You learning GoHighLevel</li>
 								<li>A bloated agency team between you and the work</li>
 								<li>Paid ads spend (media budget stays yours)</li>
-								<li>OnRoof Systems / roofing lead product (separate brand)</li>
 							</ul>
 						</div>
 						<div style="margin-top: var(--space-6)">
@@ -217,7 +285,7 @@ const calendarUrl =
 			<div class="page-wrap">
 				<p class="section__eyebrow">Why this works</p>
 				<h2 class="section__title" id="trust-title">Specifics beat slogans.</h2>
-				<div class="trust__points">
+				<div class="trust__points reveal reveal-stagger" data-reveal>
 					<div class="trust__point">
 						<strong>Deep GHL, not dabbling</strong>
 						<p>
@@ -235,8 +303,8 @@ const calendarUrl =
 					<div class="trust__point">
 						<strong>Written for trades, not SaaS buyers</strong>
 						<p>
-							Dan Kennedy direct-response: hard offer, clear price, urgency grounded in missed
-							jobs — not “empower your journey.”
+							Dan Kennedy direct-response: hard offer, clear price, urgency grounded in missed jobs
+							— not “empower your journey.”
 						</p>
 					</div>
 				</div>
@@ -264,9 +332,9 @@ const calendarUrl =
 					<details class="faq__item">
 						<summary>Who answers the leads?</summary>
 						<p>
-							Your shop — or the after-hours process we set with you. The system makes sure
-							someone (or an immediate text-back) engages fast. We don’t pretend to be your
-							dispatcher unless that’s part of the plan we agree on the call.
+							Your shop — or the after-hours process we set with you. The system makes sure someone
+							(or an immediate text-back) engages fast. We don’t pretend to be your dispatcher
+							unless that’s part of the plan we agree on the call.
 						</p>
 					</details>
 					<details class="faq__item">
@@ -298,8 +366,8 @@ const calendarUrl =
 			<div class="page-wrap">
 				<h2 class="final__title" id="final-title">Stop funding the competitor who picks up.</h2>
 				<p class="final__copy">
-					$297 setup. $447/mo. Done-for-you GHL. Book a short call, we’ll map your after-hours
-					leak, and if it’s a fit we build — you keep running trucks.
+					$297 setup. $447/mo. Done-for-you GHL. Book a short call, we’ll map your after-hours leak,
+					and if it’s a fit we build — you keep running trucks.
 				</p>
 				<CtaButton href={calendarUrl}>Book your setup call</CtaButton>
 				<p class="final__meta">Opens the GoHighLevel booking calendar. Fifteen minutes. Straight talk.</p>
@@ -309,11 +377,38 @@ const calendarUrl =
 
 	<footer class="site-footer page-wrap">
 		<p><strong>Bob’s Business Bots</strong> — DFY marketing automation for emergency trades.</p>
-		<p>© {new Date().getFullYear()}</p>
+		<p><a href="#top">Back to top</a> · © {new Date().getFullYear()}</p>
 	</footer>
 </BaseLayout>
 
 <script>
+	const nav = document.getElementById('site-nav');
+	const toggle = document.querySelector('[data-nav-toggle]');
+	const drawer = document.getElementById('nav-drawer');
+
+	const setOpen = (open: boolean) => {
+		if (!nav || !toggle || !drawer) return;
+		nav.classList.toggle('is-open', open);
+		toggle.setAttribute('aria-expanded', String(open));
+		drawer.hidden = !open;
+	};
+
+	toggle?.addEventListener('click', () => {
+		const open = toggle.getAttribute('aria-expanded') !== 'true';
+		setOpen(open);
+	});
+
+	document.querySelectorAll('[data-nav-close]').forEach((el) => {
+		el.addEventListener('click', () => setOpen(false));
+	});
+
+	const onScroll = () => {
+		if (!nav) return;
+		nav.classList.toggle('is-scrolled', window.scrollY > 24);
+	};
+	onScroll();
+	window.addEventListener('scroll', onScroll, { passive: true });
+
 	const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	const nodes = document.querySelectorAll('[data-reveal]');
 	if (!reduce && 'IntersectionObserver' in window) {
@@ -326,7 +421,7 @@ const calendarUrl =
 					}
 				}
 			},
-			{ rootMargin: '0px 0px -8% 0px', threshold: 0.15 },
+			{ rootMargin: '0px 0px -10% 0px', threshold: 0.12 },
 		);
 		nodes.forEach((el) => io.observe(el));
 	} else {
